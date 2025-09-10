@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
   try {
-    console.log('Received login:', username, password); // debug
+    console.log('Received login:', username, password);
     if (!username || !password) {
       return res.status(400).json({ error: 'Username and password required' });
     }
@@ -28,12 +28,13 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// Optional health check
+// Health check
 app.get('/', (req, res) => {
   res.send('Backend is running');
 });
 
+// Use Render's PORT
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
